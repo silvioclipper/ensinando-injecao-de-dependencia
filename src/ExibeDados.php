@@ -8,6 +8,6 @@ class ExibeDados
 {
     public function exibirDados()
     {
-        echo '<h1>qualque coisa</h1>';
+        echo "<h1>qualque coisa</h1>";
     }
 }
