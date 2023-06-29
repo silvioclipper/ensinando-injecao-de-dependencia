@@ -1,6 +1,6 @@
 <?php
 
-require_once './vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use App\Cliente;
 use App\Notificacao;
@@ -17,3 +17,5 @@ $conteudoNotificacao = 'Compra efetuada realizado';
 $transacao = $cliente->notificarCliente($conteudoNotificacao);
 
 $exibeDados->exibirDados($conteudoNotificacao);
+
+//docs
