@@ -15,8 +15,8 @@ class Cliente
         $this->notificacao = $notificacao;
     }
 
-    public function notificarCliente(string $notificacao)
+    public function notificarCliente(string $notificacao): string
     {
-        return 'Notificação envianda.';
+        return $notificacao;
     }
 }

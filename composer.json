@@ -1,6 +1,6 @@
 {
     "name": "silvio.azevedo/dpi",
-    "description": "Apresentação de injeção de dependência para leigos.",
+    "description": "Aula de injeção de dependência para leigos.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
