@@ -10,11 +10,27 @@ services:
     working_dir: /var/www/html
     ports:
       - 80:80
+    depends_on:
+      - dataBase
     command: >
-      sh -c "      
+      sh -c "
+      docker-php-ext-install pdo_mysql &&
       php -S 0.0.0.0:80
       "
-      
+  
+  dataBase:
+    image: mysql:8.0
+    container_name: mysql
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+    ports:
+      - 3006:3006
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bancoContas
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+  
   composer:
     image: composer
     container_name: composer
