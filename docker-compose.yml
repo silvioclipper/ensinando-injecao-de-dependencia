@@ -21,16 +21,17 @@ services:
   dataBase:
     image: mysql:8.0
     container_name: mysql
-    volumes:
-      - ./mysqlData:/var/lib/mysql
-    ports:
-      - 3006:3006
-    environment:
+    environment: 
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=bancoContas
       - MYSQL_USER=user
       - MYSQL_PASSWORD=user
-  
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+      - ./db_scripts:/docker-entrypoint-initdb.d      
+    ports:
+      - 3306:3306    
+
   composer:
     image: composer
     container_name: composer
