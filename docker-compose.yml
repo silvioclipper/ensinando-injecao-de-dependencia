@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  
+  phpWebService:
+    image: php:8.2.7-alpine
+    container_name: php
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - 80:80
+    depends_on:
+      - dataBase
+    command: >
+      sh -c "
+      docker-php-ext-install pdo_mysql &&
+      php -S 0.0.0.0:80
+      "
+  
+  dataBase:
+    image: mysql:8.0
+    container_name: mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bancoContas
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+      - ./db_scripts:/docker-entrypoint-initdb.d      
+    ports:
+      - 3306:3306    
+
+  composer:
+    image: composer
+    container_name: composer
+    volumes:
+        - ./:/app
+    working_dir: /app
+    command: "composer install"
